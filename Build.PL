@@ -34,13 +34,27 @@ my %module_build_args = (
   },
   "script_files" => [],
   "test_requires" => {
+    "Capture::Tiny" => 0,
+    "Dist::Zilla::Chrome::Test" => 0,
+    "Dist::Zilla::Dist::Builder" => 0,
+    "Dist::Zilla::MVP::Assembler::Zilla" => 0,
+    "Dist::Zilla::MVP::Section" => 0,
+    "Path::Tiny" => 0,
+    "Test::Fatal" => 0,
     "Test::More" => "1.001002"
   }
 );
 
 
 my %fallback_build_requires = (
+  "Capture::Tiny" => 0,
+  "Dist::Zilla::Chrome::Test" => 0,
+  "Dist::Zilla::Dist::Builder" => 0,
+  "Dist::Zilla::MVP::Assembler::Zilla" => 0,
+  "Dist::Zilla::MVP::Section" => 0,
   "Module::Build" => "0.4203",
+  "Path::Tiny" => 0,
+  "Test::Fatal" => 0,
   "Test::More" => "1.001002"
 );
 

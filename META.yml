@@ -3,7 +3,14 @@ abstract: 'Set up Log::Contextual for use with Dist::Zilla'
 author:
   - 'Kent Fredric <kentfredric@gmail.com>'
 build_requires:
+  Capture::Tiny: 0
+  Dist::Zilla::Chrome::Test: 0
+  Dist::Zilla::Dist::Builder: 0
+  Dist::Zilla::MVP::Assembler::Zilla: 0
+  Dist::Zilla::MVP::Section: 0
   Module::Build: 0.4203
+  Path::Tiny: 0
+  Test::Fatal: 0
   Test::More: 1.001002
 configure_requires:
   Module::Build: 0.4203
@@ -34,7 +41,12 @@ resources:
 version: 0.001000
 x_BuiltWith:
   modules:
+    Capture::Tiny: 0.23
     Carp: 1.32
+    Dist::Zilla::Chrome::Test: 5.006
+    Dist::Zilla::Dist::Builder: 5.006
+    Dist::Zilla::MVP::Assembler::Zilla: 5.006
+    Dist::Zilla::MVP::Section: 5.006
     Dist::Zilla::Plugin::Authority: 1.006
     Dist::Zilla::Plugin::AutoPrereqs: 5.006
     Dist::Zilla::Plugin::ConfirmRelease: 5.006
@@ -82,9 +94,11 @@ x_BuiltWith:
     Log::Contextual::LogDispatchouli: 0.001000
     Module::Build: 0.4203
     Moose: 2.1107
+    Path::Tiny: 0.049
     Pod::Coverage::TrustPod: 0.100003
     Test::CPAN::Changes: 0.27
     Test::CPAN::Meta: 0.23
+    Test::Fatal: 0.013
     Test::Kwalitee: 1.17
     Test::More: 1.001002
     Test::Pod: 1.48
@@ -123,7 +137,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::LogContextual
       name: LogContextual
-      version: ~
+      version: 0.001000
     -
       class: Dist::Zilla::Plugin::Git::NextVersion::Sanitized
       config:
