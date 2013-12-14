@@ -19,6 +19,18 @@ TL;DR
         [LogContextual] 
         ; plugins with Log::Contextual in them should work nao
 
+CAVEATS
+    *   NO PREFIXES
+
+        At this time, The nice pretty [Foo/Bar] prefix from
+        "$plugin->plugin_name" is not supported.
+
+        We're not sure if it ever will, it probably will, but the code makes
+        my head hurt at present.
+
+        Was better to release something, albeit feature incomplete, than to
+        release nothing at all.
+
 AUTHOR
     Kent Fredric <kentfredric@gmail.com>
 

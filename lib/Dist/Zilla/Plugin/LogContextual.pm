@@ -12,6 +12,7 @@ BEGIN {
 # ABSTRACT: Set up Log::Contextual for use with Dist::Zilla
 
 
+
 use Moose;
 use Log::Contextual qw( set_logger log_debug );
 
@@ -79,6 +80,20 @@ I don't really understand it all fully, so I'm implementing what I know to learn
 
     [LogContextual] 
     ; plugins with Log::Contextual in them should work nao
+
+=head1 CAVEATS
+
+=over 4
+
+=item * B<NO PREFIXES>
+
+At this time, The nice pretty [Foo/Bar] prefix from C<< $plugin->plugin_name >> is not supported.
+
+We're not sure if it ever will, it probably will, but the code makes my head hurt at present.
+
+Was better to release something, albeit feature incomplete, than to release nothing at all.
+
+=back
 
 =head1 AUTHOR
 

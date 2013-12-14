@@ -415,6 +415,11 @@
                      },
                      {
                         "class" : "Pod::Weaver::Section::Generic",
+                        "name" : "TL;DR",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Generic",
                         "name" : "OVERVIEW",
                         "version" : "4.004"
                      },
