@@ -151,7 +151,7 @@ We're not sure if it ever will, it probably will, but the code makes my head hur
 
 Was better to release something, albeit feature incomplete, than to release nothing at all.
 
-=item * B<REQUIRES ::LogDispatchouli> subclass
+=item * B<< REQUIRES C<::LogDispatchouli> >> subclass
 
 This seems in contrast to the Log::Contextual design principles, things invoking
 loggers shouldn't care about how they're working, just they should work.
@@ -164,6 +164,7 @@ do the right thing when calling code simply does
 So the C<Dispatchouli> is I<strictly> top level knowledge.
 
 But I'll wait for updates on how that should work before I make it work that way =)
+
 =back
 
 =head1 AUTHOR

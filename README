@@ -89,7 +89,7 @@ CAVEATS
         Was better to release something, albeit feature incomplete, than to
         release nothing at all.
 
-    *   REQUIRES ::LogDispatchouli subclass
+    *   REQUIRES "::LogDispatchouli" subclass
 
         This seems in contrast to the Log::Contextual design principles,
         things invoking loggers shouldn't care about how they're working,
@@ -103,7 +103,7 @@ CAVEATS
         So the "Dispatchouli" is *strictly* top level knowledge.
 
         But I'll wait for updates on how that should work before I make it
-        work that way =) =back
+        work that way =)
 
 AUTHOR
     Kent Fredric <kentfredric@gmail.com>
@@ -114,11 +114,4 @@ COPYRIGHT AND LICENSE
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
-
-POD ERRORS
-    Hey! The above document had some coding errors, which are explained
-    below:
-
-    Around line 169:
-        You forgot a '=back' before '=head1'
 
