@@ -109,7 +109,7 @@ But I'll wait for updates on how that should work before I make it work that way
 =cut
 
 use Moose;
-use Log::Contextual qw( set_logger log_debug );
+use Log::Contextual::LogDispatchouli qw( set_logger log_debug log_fatal );
 
 # WARNING: Removing this will cause log_debug { }
 # to change from a function call to log_contextual's log_debug
