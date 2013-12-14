@@ -49,6 +49,7 @@ sub pmver {
 }
 
 eval { $v .= pmver('Dist::Zilla::Role::Plugin','any version') };
+eval { $v .= pmver('Log::Contextual','any version') };
 eval { $v .= pmver('Module::Build','0.4203') };
 eval { $v .= pmver('Moose','any version') };
 eval { $v .= pmver('Test::More','1.001002') };
