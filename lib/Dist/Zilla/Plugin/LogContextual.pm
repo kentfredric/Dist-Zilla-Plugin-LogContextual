@@ -33,7 +33,7 @@ sub bootstrap {
     die "WHAT CHROME IS THIS";
   }
   set_logger $chrome->logger;
-  log_debug { [ "If you are reading this message, %s! -- %s", "Log::Contextual", $self ] };
+  log_debug { [ "If you are reading this message, %s works! -- %s", "Log::Contextual", $self ] };
 }
 
 around plugin_from_config => sub {
