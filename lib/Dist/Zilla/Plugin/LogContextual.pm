@@ -36,7 +36,7 @@ with the same name as C<Log::Contextual>.
 This has the unfortunate side effect of meaning the following wont work:
 
     use Moose;
-    use Log::Contextual qw( log_debug );
+    use Log::Contextual::LogDispatchouli  qw( log_debug );
     with 'Dist::Zilla::Role::Plugin';
 
     sub foo {
@@ -46,7 +46,7 @@ This has the unfortunate side effect of meaning the following wont work:
 There's an easy way around this, but it doesn't seem obvious at first glance.
 
     use Moose;
-    use Log::Contextual qw( log_debug );
+    use Log::Contextual::LogDispatchouli qw( log_debug );
     use namespace::autoclean;
     with 'Dist::Zilla::Role::Plugin';
 
@@ -64,7 +64,7 @@ So here's how C<perl> processes the above code:
 
     # COMPILE PHASE
     use Moose;
-    use Log::Contextual qw( log_debug );
+    use Log::Contextual::LogDispatchouli qw( log_debug );
     use namespace::autoclean;
 
     sub foo {
@@ -89,6 +89,20 @@ At this time, The nice pretty C<[Foo/Bar]> prefix from C<< $plugin->plugin_name 
 We're not sure if it ever will, it probably will, but the code makes my head hurt at present.
 
 Was better to release something, albeit feature incomplete, than to release nothing at all.
+
+=item * B<< REQUIRES C<::LogDispatchouli> >> subclass
+
+This seems in contrast to the Log::Contextual design principles, things invoking
+loggers shouldn't care about how they're working, just they should work.
+
+I'm I<Hoping> in a future release of C<::LogDispatchouli> that it can transparently
+do the right thing when calling code simply does
+
+    use Log::Contextual
+
+So the C<Dispatchouli> is I<strictly> top level knowledge.
+
+But I'll wait for updates on how that should work before I make it work that way =)
 
 =back
 
