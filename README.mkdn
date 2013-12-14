@@ -18,7 +18,7 @@ I don't really understand it all fully, so I'm implementing what I know to learn
 
 # TL;DR
 
-One day dzil may do this out of the box __\[citation needed\]__
+One day `dzil` may do this out of the box __\[citation needed\]__
 
 However, otherwise, if you have any plugins or tools or whatnot that want to use [`Log::Contextual`](https://metacpan.org/pod/Log::Contextual), you'll need to load this `plugin` first.
 
@@ -35,7 +35,7 @@ with the same name as `Log::Contextual`.
 This has the unfortunate side effect of meaning the following wont work:
 
     use Moose;
-    use Log::Contextual qw( log_debug );
+    use Log::Contextual::LogDispatchouli  qw( log_debug );
     with 'Dist::Zilla::Role::Plugin';
 
     sub foo {
@@ -45,7 +45,7 @@ This has the unfortunate side effect of meaning the following wont work:
 There's an easy way around this, but it doesn't seem obvious at first glance.
 
     use Moose;
-    use Log::Contextual qw( log_debug );
+    use Log::Contextual::LogDispatchouli qw( log_debug );
     use namespace::autoclean;
     with 'Dist::Zilla::Role::Plugin';
 
@@ -53,7 +53,7 @@ There's an easy way around this, but it doesn't seem obvious at first glance.
         log_debug {  }; # Now works
     }
 
-If you're confused, thats ok.
+If you're confused, that is quite o.k.
 
 But its sensible once you understand how.
 
@@ -63,7 +63,7 @@ So here's how `perl` processes the above code:
 
     # COMPILE PHASE
     use Moose;
-    use Log::Contextual qw( log_debug );
+    use Log::Contextual::LogDispatchouli qw( log_debug );
     use namespace::autoclean;
 
     sub foo {
@@ -86,6 +86,20 @@ Its not 100% ideal, but it works!.
     We're not sure if it ever will, it probably will, but the code makes my head hurt at present.
 
     Was better to release something, albeit feature incomplete, than to release nothing at all.
+
+- __REQUIRES `::LogDispatchouli`__ subclass
+
+    This seems in contrast to the Log::Contextual design principles, things invoking
+    loggers shouldn't care about how they're working, just they should work.
+
+    I'm _Hoping_ in a future release of `::LogDispatchouli` that it can transparently
+    do the right thing when calling code simply does
+
+        use Log::Contextual
+
+    So the `Dispatchouli` is _strictly_ top level knowledge.
+
+    But I'll wait for updates on how that should work before I make it work that way =)
 
 # AUTHOR
 
