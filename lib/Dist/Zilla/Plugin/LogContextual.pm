@@ -68,7 +68,7 @@ version 0.001000
 
 =head1 DESCRIPTION
 
-Log::Contextual is a context driven Logging facility that aims to provide
+L<< C<Log::Contextual>|Log::Contextual >> is a context driven Logging facility that aims to provide
 cross-cutting log mechanisms.
 
 However, the way it works means that if nobody starts an initial 'set_logger' call,
@@ -78,12 +78,16 @@ I don't really understand it all fully, so I'm implementing what I know to learn
 
 =head1 TL;DR
 
+One day dzil may do this out of the box B<[citation needed]>
+
+However, otherwise, if you have any plugins or tools or whatnot that want to use L<< C<Log::Contextual>|Log::Contextual >>, you'll need to load this C<plugin> first.
+
     [LogContextual]
     ; plugins with Log::Contextual in them should work nao
 
 =head1 TIPS ON USING Log::Contextual
 
-Using Log::Contextual with Dist::Zilla is not entirely painless.
+Using L<< C<Log::Contextual>|Log::Contextual >> with L<< C<Dist::Zilla>|Dist::Zilla >> is not entirely painless.
 
 Notably, because the role C<Dist::Zilla::Role::Plugin> exports a few logging methods
 with the same name as C<Log::Contextual>.
