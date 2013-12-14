@@ -14,7 +14,7 @@ BEGIN {
 
 
 use Moose;
-use Log::Contextual qw( set_logger log_debug log_fatal );
+use Log::Contextual::LogDispatchouli qw( set_logger log_debug log_fatal );
 
 # WARNING: Removing this will cause log_debug { }
 # to change from a function call to log_contextual's log_debug
@@ -31,9 +31,9 @@ sub bootstrap {
   my $zilla  = $self->zilla;
   my $chrome = $zilla->chrome;
   if ( not $chrome ) {
-    return log_fatal { q[zilla->chrome returned undef. This is not ok] };
+    require Carp;
+    Carp::croak(q[zilla->chrome returned undef. This is not ok]);
   }
-  log_fatal q[ %_% ];
   set_logger $chrome->logger;
   log_debug { [ q[If you are reading this message, %s works! -- %s], q[Log::Contextual], $self ] };
   return;

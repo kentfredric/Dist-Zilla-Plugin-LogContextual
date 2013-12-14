@@ -48,10 +48,18 @@ sub pmver {
     return sprintf('%-45s => %-10s%-15s%s', $module, $pmver, $wanted, "\n");
 }
 
+eval { $v .= pmver('Capture::Tiny','any version') };
+eval { $v .= pmver('Carp','any version') };
+eval { $v .= pmver('Dist::Zilla::Chrome::Test','any version') };
+eval { $v .= pmver('Dist::Zilla::Dist::Builder','any version') };
+eval { $v .= pmver('Dist::Zilla::MVP::Assembler::Zilla','any version') };
+eval { $v .= pmver('Dist::Zilla::MVP::Section','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::Plugin','any version') };
-eval { $v .= pmver('Log::Contextual','any version') };
+eval { $v .= pmver('Log::Contextual::LogDispatchouli','any version') };
 eval { $v .= pmver('Module::Build','0.4203') };
 eval { $v .= pmver('Moose','any version') };
+eval { $v .= pmver('Path::Tiny','any version') };
+eval { $v .= pmver('Test::Fatal','any version') };
 eval { $v .= pmver('Test::More','1.001002') };
 eval { $v .= pmver('namespace::autoclean','any version') };
 eval { $v .= pmver('strict','any version') };
