@@ -8,8 +8,6 @@ MANIFEST
 META.json
 META.yml
 README
-corpus/fake_dist_01/lib/E.pm
-corpus/fake_dist_01/t/placeholder.txt
 dist.ini
 lib/Dist/Zilla/Plugin/LogContextual.pm
 maint-travis-ci/README.mkdn
@@ -29,7 +27,6 @@ maint-travis-ci/yamls/sterile2.yaml
 perlcritic.rc
 t/00-compile/lib_Dist_Zilla_Plugin_LogContextual_pm.t
 t/000-report-versions-tiny.t
-t/01-basic.t
 weaver.ini
 xt/author/critic.t
 xt/release/cpan-changes.t
