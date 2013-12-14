@@ -19,6 +19,59 @@ TL;DR
         [LogContextual] 
         ; plugins with Log::Contextual in them should work nao
 
+TIPS ON USING Log::Contextual
+    Using Log::Contextual with Dist::Zilla is not entirely painless.
+
+    Notably, because the role "Dist::Zilla::Role::Plugin" exports a few
+    logging methods with the same name as "Log::Contextual".
+
+    This has the unfortunate side effect of meaning the following wont work:
+
+        use Moose;
+        use Log::Contextual qw( log_debug );
+        with 'Dist::Zilla::Role::Plugin';
+
+        sub foo {
+            log_debug {  }; # messes up and tries to call the log_debug method provided by $self->logger
+        }
+
+    There's an easy way around this, but it doesn't seem obvious at first
+    glance.
+
+        use Moose;
+        use Log::Contextual qw( log_debug );
+        use namespace::autoclean;
+        with 'Dist::Zilla::Role::Plugin';
+
+        sub foo {
+            log_debug {  }; # Now works
+        }
+
+    If you're confused, thats ok.
+
+    But its sensible once you understand how.
+
+    Essentially, because the "log_debug" sub is removed at compile time, all
+    calls to that become fixed, instead of flexible.
+
+    So here's how perl processes the above code:
+
+        # COMPILE PHASE
+        use Moose;
+        use Log::Contextual qw( log_debug );
+        use namespace::autoclean;
+
+        sub foo {
+            log_debug {  }; # BINDS this call to the imported sub 
+        }
+
+        # END OF COMPILE PHASE
+        # namespace::autoclean removes *log_debug forcing the bind
+        # RUNTIME
+        with  'Dist::Zilla::Role::Plugin'; # Cant change compile-time things.
+
+    Its not 100% ideal, but it works!.
+
 CAVEATS
     *   NO PREFIXES
 
