@@ -71,7 +71,7 @@ version 0.001000
 L<< C<Log::Contextual>|Log::Contextual >> is a context driven Logging facility that aims to provide
 cross-cutting log mechanisms.
 
-However, the way it works means that if nobody starts an initial 'set_logger' call,
+However, the way it works means that if nobody starts an initial C<set_logger> call,
 the logs may go nowhere. Or something.
 
 I don't really understand it all fully, so I'm implementing what I know to learn it better.
@@ -117,9 +117,9 @@ If you're confused, thats ok.
 
 But its sensible once you understand how.
 
-Essentially, because the "log_debug" sub is removed at compile time, all calls to that become fixed, instead of flexible.
+Essentially, because the C<log_debug> C<sub> is removed at compile time, all calls to that become fixed, instead of flexible.
 
-So here's how perl processes the above code:
+So here's how C<perl> processes the above code:
 
     # COMPILE PHASE
     use Moose;
@@ -143,7 +143,7 @@ Its not 100% ideal, but it works!.
 
 =item * B<NO PREFIXES>
 
-At this time, The nice pretty [Foo/Bar] prefix from C<< $plugin->plugin_name >> is not supported.
+At this time, The nice pretty C<[Foo/Bar]> prefix from C<< $plugin->plugin_name >> is not supported.
 
 We're not sure if it ever will, it probably will, but the code makes my head hurt at present.
 
