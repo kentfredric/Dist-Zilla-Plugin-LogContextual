@@ -26,6 +26,10 @@ requires:
   perl: 5.006
   strict: 0
   warnings: 0
+resources:
+  bugtracker: https://github.com/kentfredric/Dist-Zilla-Plugin-LogContextual/issues
+  homepage: https://github.com/kentfredric/Dist-Zilla-Plugin-LogContextual
+  repository: https://github.com/kentfredric/Dist-Zilla-Plugin-LogContextual.git
 version: 0.001000
 x_BuiltWith:
   modules:

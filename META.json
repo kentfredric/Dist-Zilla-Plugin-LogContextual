@@ -104,6 +104,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kentfredric/Dist-Zilla-Plugin-LogContextual/issues"
+      },
+      "homepage" : "https://github.com/kentfredric/Dist-Zilla-Plugin-LogContextual",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/kentfredric/Dist-Zilla-Plugin-LogContextual.git",
+         "web" : "https://github.com/kentfredric/Dist-Zilla-Plugin-LogContextual"
+      }
+   },
    "version" : "0.001000",
    "x_BuiltWith" : {
       "modules" : {
