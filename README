@@ -1,0 +1,31 @@
+NAME
+    Dist::Zilla::Plugin::LogContextual - Set up Log::Contextual for use with
+    Dist::Zilla
+
+VERSION
+    version 0.001000
+
+DESCRIPTION
+    Log::Contextual is a context driven Logging facility that aims to
+    provide cross-cutting log mechanisms.
+
+    However, the way it works means that if nobody starts an initial
+    'set_logger' call, the logs may go nowhere. Or something.
+
+    I don't really understand it all fully, so I'm implementing what I know
+    to learn it better.
+
+TL;DR
+        [LogContextual] 
+        ; plugins with Log::Contextual in them should work nao
+
+AUTHOR
+    Kent Fredric <kentfredric@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2013 by Kent Fredric
+    <kentfredric@gmail.com>.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
