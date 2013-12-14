@@ -19,11 +19,15 @@ BEGIN {
         -excludes => [ 'log_debug', 'log_fatal', 'log' , 'logger'],
     };
 }
-{
+BEGIN {
     # Because the above excludes don't even work.
-    no warnings 'define';
-    use Log::Contextual qw( set_logger log_debug );
+    no warnings 'redefine';
+    undef *log_debug;
+    undef *log_fatal;
+    undef *log;
+    undef *logger;
 }
+use Log::Contextual qw( set_logger log_debug );
 
 sub bootstrap {
     my ( $self ) = @_;
