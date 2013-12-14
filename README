@@ -33,7 +33,7 @@ TIPS ON USING Log::Contextual
     This has the unfortunate side effect of meaning the following wont work:
 
         use Moose;
-        use Log::Contextual qw( log_debug );
+        use Log::Contextual::LogDispatchouli  qw( log_debug );
         with 'Dist::Zilla::Role::Plugin';
 
         sub foo {
@@ -44,7 +44,7 @@ TIPS ON USING Log::Contextual
     glance.
 
         use Moose;
-        use Log::Contextual qw( log_debug );
+        use Log::Contextual::LogDispatchouli qw( log_debug );
         use namespace::autoclean;
         with 'Dist::Zilla::Role::Plugin';
 
@@ -63,7 +63,7 @@ TIPS ON USING Log::Contextual
 
         # COMPILE PHASE
         use Moose;
-        use Log::Contextual qw( log_debug );
+        use Log::Contextual::LogDispatchouli qw( log_debug );
         use namespace::autoclean;
 
         sub foo {
@@ -89,6 +89,22 @@ CAVEATS
         Was better to release something, albeit feature incomplete, than to
         release nothing at all.
 
+    *   REQUIRES ::LogDispatchouli subclass
+
+        This seems in contrast to the Log::Contextual design principles,
+        things invoking loggers shouldn't care about how they're working,
+        just they should work.
+
+        I'm *Hoping* in a future release of "::LogDispatchouli" that it can
+        transparently do the right thing when calling code simply does
+
+            use Log::Contextual
+
+        So the "Dispatchouli" is *strictly* top level knowledge.
+
+        But I'll wait for updates on how that should work before I make it
+        work that way =) =back
+
 AUTHOR
     Kent Fredric <kentfredric@gmail.com>
 
@@ -98,4 +114,11 @@ COPYRIGHT AND LICENSE
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
+
+POD ERRORS
+    Hey! The above document had some coding errors, which are explained
+    below:
+
+    Around line 169:
+        You forgot a '=back' before '=head1'
 
