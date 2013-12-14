@@ -126,10 +126,12 @@ sub bootstrap {
   my $zilla  = $self->zilla;
   my $chrome = $zilla->chrome;
   if ( not $chrome ) {
-    die "WHAT CHROME IS THIS";
+    require Carp;
+    Carp::croak(q[zilla->chrome returned undef. This is not ok]);
   }
   set_logger $chrome->logger;
-  log_debug { [ "If you are reading this message, %s works! -- %s", "Log::Contextual", $self ] };
+  log_debug { [ q[If you are reading this message, %s works! -- %s], q[Log::Contextual], $self ] };
+  return;
 }
 
 around plugin_from_config => sub {
