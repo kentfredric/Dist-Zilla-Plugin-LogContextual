@@ -13,44 +13,38 @@ BEGIN {
 
 
 use Moose;
-
-BEGIN {
-    with 'Dist::Zilla::Role::Plugin' => {
-        -excludes => [ 'log_debug', 'log_fatal', 'log' , 'logger'],
-    };
-}
-BEGIN {
-    # Because the above excludes don't even work.
-    no warnings 'redefine';
-    undef *log_debug;
-    undef *log_fatal;
-    undef *log;
-    undef *logger;
-}
 use Log::Contextual qw( set_logger log_debug );
 
+# WARNING: Removing this will cause log_debug { }
+# to change from a function call to log_contextual's log_debug
+# to the role method ->log_debug
+# horribly breaking everything.
+use namespace::autoclean;
+
+# WARNING: Doesn't actually exclude anything
+# See previous warning.
+with 'Dist::Zilla::Role::Plugin' => { -excludes => [ 'log_debug', 'log_fatal', 'log', 'logger' ], };
+
 sub bootstrap {
-    my ( $self ) = @_;
-    my $zilla = $self->zilla;
-    my $chrome = $zilla->chrome;
-    if ( not $chrome ) { 
-        die "WHAT CHROME IS THIS";
-    }
-    set_logger $chrome->logger;
-    log_debug { ["If you are reading this message, %s! -- %s", "Log::Contextual", $self ] };
+  my ($self) = @_;
+  my $zilla  = $self->zilla;
+  my $chrome = $zilla->chrome;
+  if ( not $chrome ) {
+    die "WHAT CHROME IS THIS";
+  }
+  set_logger $chrome->logger;
+  log_debug { [ "If you are reading this message, %s! -- %s", "Log::Contextual", $self ] };
 }
 
 around plugin_from_config => sub {
   my ( $orig, $plugin_class, $name, $payload, $section ) = @_;
- 
+
   my $instance = $plugin_class->$orig( $name, $payload, $section );
- 
+
   $instance->bootstrap;
- 
+
   return $instance;
 };
-
-
 
 __PACKAGE__->meta->make_immutable;
 no Moose;

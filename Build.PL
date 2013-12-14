@@ -26,6 +26,7 @@ my %module_build_args = (
     "Dist::Zilla::Role::Plugin" => 0,
     "Log::Contextual" => 0,
     "Moose" => 0,
+    "namespace::autoclean" => 0,
     "perl" => "5.006",
     "strict" => 0,
     "warnings" => 0

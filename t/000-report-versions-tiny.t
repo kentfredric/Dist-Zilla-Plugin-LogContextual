@@ -53,6 +53,7 @@ eval { $v .= pmver('Log::Contextual','any version') };
 eval { $v .= pmver('Module::Build','0.4203') };
 eval { $v .= pmver('Moose','any version') };
 eval { $v .= pmver('Test::More','1.001002') };
+eval { $v .= pmver('namespace::autoclean','any version') };
 eval { $v .= pmver('strict','any version') };
 eval { $v .= pmver('warnings','any version') };
 

@@ -22,6 +22,7 @@ requires:
   Dist::Zilla::Role::Plugin: 0
   Log::Contextual: 0
   Moose: 0
+  namespace::autoclean: 0
   perl: 5.006
   strict: 0
   warnings: 0
@@ -82,6 +83,7 @@ x_BuiltWith:
     Test::More: 1.001002
     Test::Pod: 1.48
     Test::Pod::Coverage: 1.08
+    namespace::autoclean: 0.14
     strict: 1.08
     version: 0.9904
     warnings: 1.20
