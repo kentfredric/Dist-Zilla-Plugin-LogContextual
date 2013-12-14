@@ -35,6 +35,7 @@ sub bootstrap {
   }
   set_logger $chrome->logger;
   log_debug { [ "If you are reading this message, %s works! -- %s", "Log::Contextual", $self ] };
+  return;
 }
 
 around plugin_from_config => sub {
@@ -78,7 +79,7 @@ I don't really understand it all fully, so I'm implementing what I know to learn
 
 =head1 TL;DR
 
-One day dzil may do this out of the box B<[citation needed]>
+One day C<dzil> may do this out of the box B<[citation needed]>
 
 However, otherwise, if you have any plugins or tools or whatnot that want to use L<< C<Log::Contextual>|Log::Contextual >>, you'll need to load this C<plugin> first.
 
@@ -113,7 +114,7 @@ There's an easy way around this, but it doesn't seem obvious at first glance.
         log_debug {  }; # Now works
     }
 
-If you're confused, thats ok.
+If you're confused, that is quite o.k.
 
 But its sensible once you understand how.
 

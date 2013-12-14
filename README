@@ -16,7 +16,7 @@ DESCRIPTION
     to learn it better.
 
 TL;DR
-    One day dzil may do this out of the box [citation needed]
+    One day "dzil" may do this out of the box [citation needed]
 
     However, otherwise, if you have any plugins or tools or whatnot that
     want to use "Log::Contextual", you'll need to load this "plugin" first.
@@ -52,7 +52,7 @@ TIPS ON USING Log::Contextual
             log_debug {  }; # Now works
         }
 
-    If you're confused, thats ok.
+    If you're confused, that is quite o.k.
 
     But its sensible once you understand how.
 
