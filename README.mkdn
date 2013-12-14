@@ -1,0 +1,99 @@
+# NAME
+
+Dist::Zilla::Plugin::LogContextual - Set up Log::Contextual for use with Dist::Zilla
+
+# VERSION
+
+version 0.001000
+
+# DESCRIPTION
+
+[`Log::Contextual`](https://metacpan.org/pod/Log::Contextual) is a context driven Logging facility that aims to provide
+cross-cutting log mechanisms.
+
+However, the way it works means that if nobody starts an initial 'set\_logger' call,
+the logs may go nowhere. Or something.
+
+I don't really understand it all fully, so I'm implementing what I know to learn it better.
+
+# TL;DR
+
+One day dzil may do this out of the box __\[citation needed\]__
+
+However, otherwise, if you have any plugins or tools or whatnot that want to use [`Log::Contextual`](https://metacpan.org/pod/Log::Contextual), you'll need to load this `plugin` first.
+
+    [LogContextual]
+    ; plugins with Log::Contextual in them should work nao
+
+# TIPS ON USING Log::Contextual
+
+Using [`Log::Contextual`](https://metacpan.org/pod/Log::Contextual) with [`Dist::Zilla`](https://metacpan.org/pod/Dist::Zilla) is not entirely painless.
+
+Notably, because the role `Dist::Zilla::Role::Plugin` exports a few logging methods
+with the same name as `Log::Contextual`.
+
+This has the unfortunate side effect of meaning the following wont work:
+
+    use Moose;
+    use Log::Contextual qw( log_debug );
+    with 'Dist::Zilla::Role::Plugin';
+
+    sub foo {
+        log_debug {  }; # messes up and tries to call the log_debug method provided by $self->logger
+    }
+
+There's an easy way around this, but it doesn't seem obvious at first glance.
+
+    use Moose;
+    use Log::Contextual qw( log_debug );
+    use namespace::autoclean;
+    with 'Dist::Zilla::Role::Plugin';
+
+    sub foo {
+        log_debug {  }; # Now works
+    }
+
+If you're confused, thats ok.
+
+But its sensible once you understand how.
+
+Essentially, because the "log\_debug" sub is removed at compile time, all calls to that become fixed, instead of flexible.
+
+So here's how perl processes the above code:
+
+    # COMPILE PHASE
+    use Moose;
+    use Log::Contextual qw( log_debug );
+    use namespace::autoclean;
+
+    sub foo {
+        log_debug {  }; # BINDS this call to the imported sub
+    }
+
+    # END OF COMPILE PHASE
+    # namespace::autoclean removes *log_debug forcing the bind
+    # RUNTIME
+    with  'Dist::Zilla::Role::Plugin'; # Cant change compile-time things.
+
+Its not 100% ideal, but it works!.
+
+# CAVEATS
+
+- __NO PREFIXES__
+
+    At this time, The nice pretty \[Foo/Bar\] prefix from `$plugin->plugin_name` is not supported.
+
+    We're not sure if it ever will, it probably will, but the code makes my head hurt at present.
+
+    Was better to release something, albeit feature incomplete, than to release nothing at all.
+
+# AUTHOR
+
+Kent Fredric <kentfredric@gmail.com>
+
+# COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
