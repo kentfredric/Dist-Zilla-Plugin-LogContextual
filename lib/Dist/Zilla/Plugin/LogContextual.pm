@@ -13,12 +13,13 @@ BEGIN {
 
 
 use Moose;
+
 BEGIN {
-with 'Dist::Zilla::Role::Plugin' => {
-    -excludes => [ 'log_debug', 'log_fatal', 'log' , 'logger'],
-};
+    with 'Dist::Zilla::Role::Plugin' => {
+        -excludes => [ 'log_debug', 'log_fatal', 'log' , 'logger'],
+    };
 }
-use Log::Contextual qw( set_logger log_debug );
+#use Log::Contextual qw( set_logger log_debug );
 
 sub bootstrap {
     my ( $self ) = @_;
