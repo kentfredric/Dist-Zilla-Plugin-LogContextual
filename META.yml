@@ -115,7 +115,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::LogContextual
       name: LogContextual
-      version: ~
+      version: 0.001000
     -
       class: Dist::Zilla::Plugin::Git::NextVersion::Sanitized
       config:

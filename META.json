@@ -202,7 +202,7 @@
          {
             "class" : "Dist::Zilla::Plugin::LogContextual",
             "name" : "LogContextual",
-            "version" : null
+            "version" : "0.001000"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::NextVersion::Sanitized",

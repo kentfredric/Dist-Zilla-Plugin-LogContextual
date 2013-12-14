@@ -21,7 +21,7 @@ BEGIN {
 }
 {
     # Because the above excludes don't even work.
-    no warnings 'redefine';
+    no warnings 'define';
     use Log::Contextual qw( set_logger log_debug );
 }
 
