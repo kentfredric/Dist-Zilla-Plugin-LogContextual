@@ -78,7 +78,7 @@ I don't really understand it all fully, so I'm implementing what I know to learn
 
 =head1 TL;DR
 
-    [LogContextual] 
+    [LogContextual]
     ; plugins with Log::Contextual in them should work nao
 
 =head1 TIPS ON USING Log::Contextual
@@ -123,7 +123,7 @@ So here's how perl processes the above code:
     use namespace::autoclean;
 
     sub foo {
-        log_debug {  }; # BINDS this call to the imported sub 
+        log_debug {  }; # BINDS this call to the imported sub
     }
 
     # END OF COMPILE PHASE

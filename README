@@ -16,7 +16,7 @@ DESCRIPTION
     to learn it better.
 
 TL;DR
-        [LogContextual] 
+        [LogContextual]
         ; plugins with Log::Contextual in them should work nao
 
 TIPS ON USING Log::Contextual
@@ -62,7 +62,7 @@ TIPS ON USING Log::Contextual
         use namespace::autoclean;
 
         sub foo {
-            log_debug {  }; # BINDS this call to the imported sub 
+            log_debug {  }; # BINDS this call to the imported sub
         }
 
         # END OF COMPILE PHASE
