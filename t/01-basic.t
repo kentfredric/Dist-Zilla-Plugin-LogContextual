@@ -28,7 +28,7 @@ $section->current_section->payload->{name}   = 'Example';
 $section->finalize;
 
 use Dist::Zilla::Plugin::LogContextual;
-use Test::Fatal qw( exception ); 
+use Test::Fatal qw( exception );
 use Capture::Tiny qw( capture );
 use Log::Contextual::LogDispatchouli qw( log_info log_fatal );
 
