@@ -33,6 +33,7 @@ sub bootstrap {
   if ( not $chrome ) {
     return log_fatal { q[zilla->chrome returned undef. This is not ok] };
   }
+  log_fatal q[ %_% ];
   set_logger $chrome->logger;
   log_debug { [ q[If you are reading this message, %s works! -- %s], q[Log::Contextual], $self ] };
   return;
